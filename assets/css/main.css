@@ -851,15 +851,7 @@ section,
   transition: 0.3s;
 }
 
-.gallery .gallery-links {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: all ease-in-out 0.3s;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 3;
-}
-
+/* Оригинальные стили ссылок в галерее */
 .gallery .gallery-links .preview-link,
 .gallery .gallery-links .details-link {
   font-size: 20px;
@@ -881,6 +873,36 @@ section,
 
 .gallery .gallery-item:hover .gallery-links {
   opacity: 1;
+}
+
+/* Отключение возможности выделения, перетаскивания и скачивания изображений в галерее */
+.gallery img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.gallery img {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+/* Стили для изображений в модальном окне (lightbox) */
+.glightbox .gslide img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.glightbox .gslide img {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
 }
 
 .gallery .gallery-item:hover .preview-link,
