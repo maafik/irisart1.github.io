@@ -233,10 +233,6 @@ class="hfeed site" id="page">
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-a5d51cb" data-id="a5d51cb" data-element_type="column">
 			<div class="elementor-widget-wrap elementor-element-populated">
 								<div class="elementor-element elementor-element-37ca009 elementor-widget elementor-widget-theme-site-logo elementor-widget-image" data-id="37ca009" data-element_type="widget" data-widget_type="theme-site-logo.default">
-				<div class="elementor-widget-container">
-																<a href="index.html">
-							<img width="2346" height="811" src="wp-content/uploads/2024/10/Group-13.png" class="attachment-full size-full" alt="" srcset="wp-content/uploads/2024/10/Group-13.png 2346w, wp-content/uploads/2024/10/Group-13-300x104.png 300w, wp-content/uploads/2024/10/Group-13-1024x354.png 1024w, wp-content/uploads/2024/10/Group-13-768x265.png 768w, wp-content/uploads/2024/10/Group-13-1536x531.png 1536w, wp-content/uploads/2024/10/Group-13-2048x708.png 2048w" sizes="(max-width: 2346px) 100vw, 2346px" />								</a>
-															</div>
 				</div>
 					</div>
 		</div>
@@ -252,9 +248,165 @@ class="hfeed site" id="page">
 										<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1120">
 											<a href="index.html#services" class="elementor-item elementor-item-anchor menu-link">Услуги</a>
 										</li>
-										<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1121">
-											<a href="index.html#how-we-work" class="elementor-item elementor-item-anchor menu-link">Контакты</a>
+										<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-1121">
+											<a href="javascript:void(0);" aria-current="page" class="elementor-item elementor-item-anchor menu-link" onclick="openForm()">Контакты</a>
 										</li>
+										
+										<!-- Модальное окно с формой -->
+										<div id="formModal" class="form-modal">
+											<div class="form-modal-content">
+												<span class="close" onclick="closeForm()">&times;</span>
+												<h2>Заполните заявку</h2>
+												<form id="consultationForm">
+													<label for="name">Имя:</label>
+													<input type="text" id="name" name="name" required>
+										
+													<label for="service">Нужная услуга:</label>
+													<select id="service" name="service" required>
+														<option value="web-design">Веб-дизайн</option>
+														<option value="graphic-design">Графический дизайн</option>
+														<option value="app-development">Разработка приложений</option>
+													</select>
+										
+													<label for="phone">Телефон:</label>
+													<input type="tel" id="phone" name="phone" required>
+										
+													<label for="contact-method">Способ связи:</label>
+													<select id="contact-method" name="contact-method" required>
+														<option value="telegram">Telegram</option>
+														<option value="whatsapp">WhatsApp</option>
+													</select>
+										
+													<button type="submit">Отправить</button>
+												</form>
+											</div>
+										</div>
+										
+										<!-- Стили для модального окна -->
+										<style>
+											/* Для модального окна */
+											.form-modal {
+												display: none;
+												position: fixed;
+												z-index: 1;
+												left: 0;
+												top: 0;
+												width: 100%;
+												height: 100%;
+												background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон */
+												padding-top: 100px; /* Чтобы окно было немного ниже верхней части экрана */
+												text-align: center; /* Центрируем содержимое */
+											}
+										
+											.form-modal-content {
+												background-color: #fefefe;
+												margin: 0 auto;
+												padding: 20px;
+												border: 1px solid #888;
+												width: 80%;
+												max-width: 500px; /* Ограничиваем максимальную ширину */
+												border-radius: 10px; /* Скругляем углы */
+											}
+										
+											.close {
+												color: #aaa;
+												float: right;
+												font-size: 28px;
+												font-weight: bold;
+												cursor: pointer;
+											}
+										
+											.close:hover,
+											.close:focus {
+												color: black;
+												text-decoration: none;
+											}
+										
+											label {
+												display: block;
+												margin-bottom: 5px;
+											}
+										
+											input, select {
+												width: 100%;
+												padding: 10px;
+												margin-bottom: 15px;
+												border: 1px solid #ccc;
+												border-radius: 4px;
+											}
+										
+											button {
+												padding: 10px 20px;
+												background-color: #4CAF50;
+												color: white;
+												border: none;
+												cursor: pointer;
+												width: 100%;
+												border-radius: 4px;
+											}
+										
+											button:hover {
+												background-color: #45a049;
+											}
+										</style>
+										
+										<!-- JavaScript для открытия/закрытия формы и отправки в Telegram -->
+										<script>
+											const botToken = '7349206398:AAEthCsuxGhjdrvUOnFwFD478q7y474kRMM'; // Токен вашего бота
+											const chatIds = ['7349206398', '5929919501']; // ID чатов, в которые будут отправляться сообщения
+										
+											// Функция для открытия формы
+											function openForm() {
+												document.getElementById("formModal").style.display = "block";
+											}
+										
+											// Функция для закрытия формы
+											function closeForm() {
+												document.getElementById("formModal").style.display = "none";
+											}
+										
+											// Отправка формы
+											document.getElementById('consultationForm').addEventListener('submit', function(event) {
+												event.preventDefault();
+										
+												const name = document.getElementById('name').value;
+												const service = document.getElementById('service').value;
+												const phone = document.getElementById('phone').value;
+												const contactMethod = document.getElementById('contact-method').value;
+										
+												const message = `
+													Новый запрос на консультацию:
+													Имя: ${name}
+													Услуга: ${service}
+													Телефон: ${phone}
+													Способ связи: ${contactMethod}
+												`;
+										
+												// Отправляем сообщение в Telegram
+												sendToTelegram(message);
+												
+												alert("Форма успешно отправлена!");
+												closeForm();
+											});
+										
+											// Функция для отправки сообщения в Telegram
+											function sendToTelegram(message) {
+												chatIds.forEach(chatId => {
+													const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+													fetch(url)
+														.then(response => response.json())
+														.then(data => {
+															if (data.ok) {
+																console.log("Сообщение отправлено в Telegram.");
+															} else {
+																console.log("Ошибка отправки сообщения:", data);
+															}
+														})
+														.catch(error => console.error("Ошибка при отправке сообщения:", error));
+												});
+											}
+										</script>
+										
 									</ul>
 								</nav>
 								<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
@@ -323,12 +475,169 @@ class="post-2865 page type-page status-publish ast-article-single" id="post-2865
 		</div>
 		<div class="elementor-element elementor-element-48a23e4 elementor-align-left elementor-mobile-align-center elementor-invisible elementor-widget elementor-widget-button" data-id="48a23e4" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:2000}" data-widget_type="button.default">
 		  <div class="elementor-widget-container">
-			<div class="elementor-button-wrapper">
-			  <a href="index.html@p=2865.html#contact" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-				<span class="elementor-button-content-wrapper">
-				  <span class="elementor-button-text">Забронируйте бесплатную консультацию</span>
-				</span>
-			  </a>
+			<div class="elementor-widget-container">
+				<div class="elementor-button-wrapper">
+					<a href="javascript:void(0);" class="elementor-button-link elementor-button elementor-size-sm" role="button" onclick="openForm()">
+						<span class="elementor-button-content-wrapper">
+							<span class="elementor-button-text">Записаться на бесплатную консультацию</span>
+						</span>
+					</a>
+				</div>
+				
+				<!-- Модальное окно с формой -->
+				<div id="formModal" class="form-modal">
+					<div class="form-modal-content">
+						<span class="close" onclick="closeForm()">&times;</span>
+						<h2>Заполните заявку</h2>
+						<form id="consultationForm">
+							<label for="name">Имя:</label>
+							<input type="text" id="name" name="name" required>
+				
+							<label for="service">Нужная услуга:</label>
+							<select id="service" name="service" required>
+								<option value="web-design">Веб-дизайн</option>
+								<option value="graphic-design">Графический дизайн</option>
+								<option value="app-development">Разработка приложений</option>
+							</select>
+				
+							<label for="phone">Телефон:</label>
+							<input type="tel" id="phone" name="phone" required>
+				
+							<label for="contact-method">Способ связи:</label>
+							<select id="contact-method" name="contact-method" required>
+								<option value="telegram">Telegram</option>
+								<option value="whatsapp">WhatsApp</option>
+							</select>
+				
+							<button type="submit">Отправить</button>
+						</form>
+					</div>
+				</div>
+				
+				<!-- Стили для модального окна -->
+				<style>
+					.form-modal {
+						display: none;
+						position: fixed;
+						z-index: 1;
+						left: 0;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						overflow: auto;
+						background-color: rgb(0,0,0);
+						background-color: rgba(0,0,0,0.4);
+						padding-top: 60px;
+					}
+				
+					.form-modal-content {
+						background-color: #fefefe;
+						margin: 5% auto;
+						padding: 20px;
+						border: 1px solid #888;
+						width: 80%;
+						max-width: 500px;
+					}
+				
+					.close {
+						color: #aaa;
+						float: right;
+						font-size: 28px;
+						font-weight: bold;
+					}
+				
+					.close:hover,
+					.close:focus {
+						color: black;
+						text-decoration: none;
+						cursor: pointer;
+					}
+				
+					label {
+						display: block;
+						margin-bottom: 5px;
+					}
+				
+					input, select {
+						width: 100%;
+						padding: 10px;
+						margin-bottom: 15px;
+						border: 1px solid #ccc;
+						border-radius: 4px;
+					}
+				
+					button {
+						padding: 10px 20px;
+						background-color: #4CAF50;
+						color: white;
+						border: none;
+						cursor: pointer;
+						width: 100%;
+						border-radius: 4px;
+					}
+				
+					button:hover {
+						background-color: #45a049;
+					}
+				</style>
+				
+				<!-- JavaScript для открытия/закрытия формы и отправки в Telegram -->
+				<script>
+					const botToken = '7349206398:AAEthCsuxGhjdrvUOnFwFD478q7y474kRMM'; // Токен вашего бота
+					const chatIds = ['7349206398', '5929919501']; // ID чатов, в которые будут отправляться сообщения
+				
+					// Функция для открытия формы
+					function openForm() {
+						document.getElementById("formModal").style.display = "block";
+					}
+				
+					// Функция для закрытия формы
+					function closeForm() {
+						document.getElementById("formModal").style.display = "none";
+					}
+				
+					// Отправка формы
+					document.getElementById('consultationForm').addEventListener('submit', function(event) {
+						event.preventDefault();
+				
+						const name = document.getElementById('name').value;
+						const service = document.getElementById('service').value;
+						const phone = document.getElementById('phone').value;
+						const contactMethod = document.getElementById('contact-method').value;
+				
+						const message = `
+							Новый запрос на консультацию:
+							Имя: ${name}
+							Услуга: ${service}
+							Телефон: ${phone}
+							Способ связи: ${contactMethod}
+						`;
+				
+						// Отправляем сообщение в Telegram
+						sendToTelegram(message);
+						
+						alert("Форма успешно отправлена!");
+						closeForm();
+					});
+				
+					// Функция для отправки сообщения в Telegram
+					function sendToTelegram(message) {
+						chatIds.forEach(chatId => {
+							const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+							fetch(url)
+								.then(response => response.json())
+								.then(data => {
+									if (data.ok) {
+										console.log("Сообщение отправлено в Telegram.");
+									} else {
+										console.log("Ошибка отправки сообщения:", data);
+									}
+								})
+								.catch(error => console.error("Ошибка при отправке сообщения:", error));
+						});
+					}
+				</script>
+				
 			</div>
 		  </div>
 		</div>
@@ -419,101 +728,6 @@ class="post-2865 page type-page status-publish ast-article-single" id="post-2865
 								</div>
 							</div>
 							
-							</div>
-		</section>
-				<section class="elementor-section elementor-top-section elementor-element elementor-element-693b033 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="693b033" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-dd75a3e" data-id="dd75a3e" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-7345fd4 elementor-widget elementor-widget-heading" data-id="7345fd4" data-element_type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-			<h6 class="elementor-heading-title elementor-size-default">Отзывы</h6>		</div>
-				</div>
-				<div class="elementor-element elementor-element-adc481c elementor-widget elementor-widget-heading" data-id="adc481c" data-element_type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-			<h2 class="elementor-heading-title elementor-size-default">Что о нас говорят наши партнеры​</h2>		</div>
-				</div>
-				<div class="elementor-element elementor-element-df72884 elementor-invisible elementor-widget elementor-widget-shortcode" data-id="df72884" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounceInUp&quot;}" data-widget_type="shortcode.default">
-				<div class="elementor-widget-container">
-					<div class="elementor-shortcode">		<div data-elementor-type="page" data-elementor-id="3115" class="elementor elementor-3115" data-elementor-settings="[]">
-							<div class="elementor-section-wrap">
-							<section class="elementor-section elementor-top-section elementor-element elementor-element-d90b81b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="d90b81b" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-9771d61" data-id="9771d61" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-4c22fa0 elementor--star-style-star_unicode nolink elementor-review--has-separator elementor-widget elementor-widget-reviews" data-id="4c22fa0" data-element_type="widget" data-settings="{&quot;slides_per_view&quot;:&quot;3&quot;,&quot;slides_to_scroll&quot;:&quot;1&quot;,&quot;slides_per_view_tablet&quot;:&quot;2&quot;,&quot;speed&quot;:500,&quot;autoplay&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;loop&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;space_between&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;space_between_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;space_between_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]}}" data-widget_type="reviews.default">
-				<div class="elementor-widget-container">
-					<div class="elementor-swiper">
-			<div class="elementor-main-swiper swiper-container">
-				<div class="swiper-wrapper">
-											<div class="swiper-slide">
-									<div class="elementor-testimonial elementor-repeater-item-c9b3002">
-							<div class="elementor-testimonial__header">
-											<div class="elementor-testimonial__image">
-							<img decoding="async" src="wp-content/uploads/2024/11/Group-19.png" alt="V.">
-						</div>
-										<cite class="elementor-testimonial__cite"><span class="elementor-testimonial__name">V.</span><div class="elementor-star-rating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i></div><span class="elementor-testimonial__title"><a class="nolink" target="_blank" href="https://mavsign.com">MavSign</a></span></cite>					<div class="elementor-testimonial__icon elementor-icon elementor-icon-"><span class="elementor-screen-only">Read More</span></div>				</div>
-										<div class="elementor-testimonial__content">
-					<div class="elementor-testimonial__text">
-						Команда ScalePoint чётко поняла задачу, задала правильные вопросы и выполнила работу в срок и в рамках бюджета. Настоятельно рекомендую!					</div>
-				</div>
-					</div>
-								</div>
-											<div class="swiper-slide">
-									<div class="elementor-testimonial elementor-repeater-item-c9f6a2c">
-							<div class="elementor-testimonial__header">
-											<div class="elementor-testimonial__image">
-							<img decoding="async" src="wp-content/uploads/2024/11/Frame-1-2.png" alt="L.">
-						</div>
-										<cite class="elementor-testimonial__cite"><span class="elementor-testimonial__name">L.</span><div class="elementor-star-rating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i></div><span class="elementor-testimonial__title"><a class="nolink" target="_blank" href="https://tzubyskids.ro">Tzuby's Kids</a></span></cite>					<div class="elementor-testimonial__icon elementor-icon elementor-icon-"><span class="elementor-screen-only">Read More</span></div>				</div>
-										<div class="elementor-testimonial__content">
-					<div class="elementor-testimonial__text">
-						Я настоятельно рекомендую компанию ScalePoint за исключительную работу по разработке сайтов www.TzubyTOYS.ro и www.TzubyCAMPERS.ro. Они продемонстрировали глубокое понимание технической функциональности, создав качественные сайты, которые не только выглядят хорошо, но и работают безупречно. Очевидно, что в каждый элемент был вложен большой внимание и профессионализм, от дизайна интерфейса до производительности бэкенда. Я не сомневаюсь в их способности выполнять будущие проекты, команда ScalePoint обладает всеми необходимыми навыками для достижения отличных результатов.					</div>
-				</div>
-					</div>
-								</div>
-											<div class="swiper-slide">
-									<div class="elementor-testimonial elementor-repeater-item-519babd">
-							<div class="elementor-testimonial__header">
-											<div class="elementor-testimonial__image">
-							<img decoding="async" src="wp-content/uploads/2024/11/Frame-1-1.png" alt="G.">
-						</div>
-										<cite class="elementor-testimonial__cite"><span class="elementor-testimonial__name">G.</span><div class="elementor-star-rating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i></div><span class="elementor-testimonial__title"><a class="nolink" target="_blank" href="https://teenchallenge.ro">Teen Challenge Romania</a></span></cite>					<div class="elementor-testimonial__icon elementor-icon elementor-icon-"><span class="elementor-screen-only">Read More</span></div>				</div>
-										<div class="elementor-testimonial__content">
-					<div class="elementor-testimonial__text">
-						Я сотрудничал с компанией ScalePoint при разработке сайта организации Teen Challenge Romania и могу с уверенностью рекомендовать их! Они работали профессионально, соблюдали сроки и уделяли внимание каждой детали. Креативность команды привнесла в сайт свежий и современный стиль, сделав его удобным и привлекательным. Сотрудничество с ними было отличным, а результат действительно впечатляющий.				</div>
-				</div>
-					</div>
-								</div>
-											<div class="swiper-slide">
-									<div class="elementor-testimonial elementor-repeater-item-96c81df">
-							<div class="elementor-testimonial__header">
-											<div class="elementor-testimonial__image">
-							<img decoding="async" src="wp-content/uploads/2024/11/Frame-1.png" alt="E.">
-						</div>
-										<cite class="elementor-testimonial__cite"><span class="elementor-testimonial__name">E.</span><div class="elementor-star-rating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i></div><span class="elementor-testimonial__title"><a class="nolink" target="_blank" href="https://tzubytoys.ro">TzubyTOYS</a></span></cite>					<div class="elementor-testimonial__icon elementor-icon elementor-icon-"><span class="elementor-screen-only">Read More</span></div>				</div>
-										<div class="elementor-testimonial__content">
-					<div class="elementor-testimonial__text">
-						Сотрудничество с компанией ScalePoint было и продолжает оставаться продуктивным как в процессе разработки сайта, так и в процессе его обслуживания. Команда ScalePoint быстро поняла, что нам нужно, и убедилась, что ни один элемент не был упущен, чтобы сайт был функциональным и удобным для пользователя. Наши сообщения быстро получали ответы, а запросы решались в рамках обещанных сроков.				</div>
-				</div>
-					</div>
-								</div>
-									</div>
-																					</div>
-		</div>
-				</div>
-				</div>
-					</div>
-		</div>
-							</div>
-		</section>
-						</div>
-					</div>
-		</div>
-				</div>
-				</div>
-					</div>
-		</div>
 							</div>
 		</section>
 				<section class="elementor-section elementor-top-section elementor-element elementor-element-49934a1 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="49934a1" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;,&quot;shape_divider_top&quot;:&quot;curve&quot;,&quot;shape_divider_top_negative&quot;:&quot;yes&quot;}">
@@ -624,70 +838,7 @@ class="post-2865 page type-page status-publish ast-article-single" id="post-2865
 							<section class="elementor-section elementor-top-section elementor-element elementor-element-80f8dae elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="80f8dae" data-element_type="section">
 						<div class="elementor-container elementor-column-gap-default">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-0fc3f40" data-id="0fc3f40" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-								<div class="elementor-element elementor-element-3d71db6 elementor-widget elementor-widget-html" data-id="3d71db6" data-element_type="widget" data-widget_type="html.default">
-				<div class="elementor-widget-container">
-			<!-- Calendly inline widget begin -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/scalepoint/30min-discovery-session-clone?hide_gdpr_banner=1&background_color=fdfffc&text_color=0a090c&primary_color=b80f00" style="min-width:320px;height:700px;"></div>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Calendly inline widget end -->		</div>
-				</div>
-				<div class="elementor-element elementor-element-8e5f178 elementor-widget elementor-widget-html" data-id="8e5f178" data-element_type="widget" data-widget_type="html.default">
-				<div class="elementor-widget-container">
-			<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Select the target element
-    var target = document.getElementById('contact');
 
-    // Create an intersection observer
-    var observer = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          // Log or send the event to analytics when the element is in view
-        //   startCheckingForConfirmation();
-        
-        
-        window.addEventListener(
-            'message',
-            function(e) {
-                if (isCalendlyEvent(e)) {
-                    if(e.data.event.toLowerCase().includes("calendly.event_scheduled")) {
-                        window.location.replace("/booked-mobile")
-                    }
-                }
-            }
-        );
-        
-          sendAnalyticsEvent();
-         
-          // Optionally, disconnect the observer if you only want to send the event once
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.5 }); // Adjust threshold as needed (0.5 means 50% of the element is visible)
-
-    // Observe the target element
-    observer.observe(target);
-
-    // Define the function to send the event to analytics
-    function sendAnalyticsEvent() {
-      // Example for Google Analytics 4
-      const url = `${window.location.href.replace("https://scalepointsoftware.com/", "")}`
-      gtag('event', 'view_booking_mobile', {
-         'page' : url
-      });
-    }
-    
-    function isCalendlyEvent(e) {
-        return e.data.event &&
-         e.data.event.indexOf('calendly') === 0;
-    };
-    
-  });
-</script>
-		</div>
-				</div>
-					</div>
 		</div>
 							</div>
 		</section>
@@ -719,37 +870,41 @@ class="post-2865 page type-page status-publish ast-article-single" id="post-2865
 
 	</div> <!-- ast-container -->
 	</div><!-- #content -->
-		<div data-elementor-type="footer" data-elementor-id="36" class="elementor elementor-36 elementor-location-footer" data-elementor-settings="[]">
+	<div data-elementor-type="footer" data-elementor-id="36" class="elementor elementor-36 elementor-location-footer" data-elementor-settings="[]">
 		<div class="elementor-section-wrap">
 					<section class="elementor-section elementor-top-section elementor-element elementor-element-77e69dd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="77e69dd" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 						<div class="elementor-container elementor-column-gap-default">
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-a5357f1" data-id="a5357f1" data-element_type="column">
 			<div class="elementor-widget-wrap elementor-element-populated">
 								<div class="elementor-element elementor-element-da04626 elementor-shape-circle e-grid-align-left e-grid-align-mobile-center elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="da04626" data-element_type="widget" data-widget_type="social-icons.default">
-				<div class="elementor-widget-container">
-					<div class="elementor-social-icons-wrapper elementor-grid">
-							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-animation-grow elementor-repeater-item-1411f98" href="https://www.facebook.com/scalepoint.software/" target="_blank">
-						<span class="elementor-screen-only">Facebook</span>
-						<svg class="e-font-icon-svg e-fab-facebook"><use xlink:href="#fab-facebook" /></svg>					</a>
-				</span>
-							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-grow elementor-repeater-item-5828672" href="https://www.instagram.com/scale.point/" target="_blank">
-						<span class="elementor-screen-only">Instagram</span>
-						<svg class="e-font-icon-svg e-fab-instagram"><use xlink:href="#fab-instagram" /></svg>					</a>
-				</span>
-							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-icon-threads-brands-solid elementor-animation-grow elementor-repeater-item-194c7ff" href="https://www.threads.net/@scale.point" target="_blank">
-						<span class="elementor-screen-only">Icon-threads-brands-solid</span>
-						<i class="icon icon-threads-brands-solid"></i>					</a>
-				</span>
-							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-whatsapp elementor-animation-grow elementor-repeater-item-0f6e22f" href="https://wa.me/40786603513" target="_blank">
-						<span class="elementor-screen-only">Whatsapp</span>
-						<svg class="e-font-icon-svg e-fab-whatsapp"><use xlink:href="#fab-whatsapp" /></svg>					</a>
-				</span>
-					</div>
-				</div>
+<!-- Подключение Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+<div class="elementor-widget-wrap elementor-element-populated">
+	<div class="elementor-element elementor-element-da04626 elementor-shape-circle e-grid-align-left e-grid-align-mobile-center elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="da04626" data-element_type="widget" data-widget_type="social-icons.default">
+	  <div class="elementor-widget-container">
+		<div class="elementor-social-icons-wrapper elementor-grid">
+		  <!-- WhatsApp Icon -->
+		  <span class="elementor-grid-item">
+			<a class="elementor-icon elementor-social-icon elementor-social-icon-whatsapp elementor-animation-grow" href="https://wa.me/79517623467" target="_blank">
+			  <span class="elementor-screen-only">Whatsapp</span>
+			  <!-- Иконка WhatsApp с белой обводкой -->
+			  <i class="fab fa-whatsapp" style="color: white; border-radius: 50%;"></i>
+			</a>
+		  </span>
+  
+		  <!-- Telegram Icon -->
+		  <span class="elementor-grid-item">
+			<a class="elementor-icon elementor-social-icon elementor-social-icon-telegram elementor-animation-grow" href="https://t.me/IrisArts1" target="_blank">
+			  <span class="elementor-screen-only">Telegram</span>
+			  <!-- Иконка Telegram с белой обводкой -->
+			  <i class="fab fa-telegram-plane" style="color: white; border-radius: 50%;"></i>
+			</a>
+		  </span>
+		</div>
+	  </div>
+	</div>
+  </div>
 				</div>
 					</div>
 		</div>
@@ -758,7 +913,7 @@ class="post-2865 page type-page status-publish ast-article-single" id="post-2865
 								<div class="elementor-element elementor-element-e7678c9 elementor-widget elementor-widget-copyright" data-id="e7678c9" data-element_type="widget" data-settings="{&quot;align&quot;:&quot;right&quot;,&quot;align_mobile&quot;:&quot;center&quot;}" data-widget_type="copyright.default">
 				<div class="elementor-widget-container">
 					<div class="hfe-copyright-wrapper">
-							<span>Copyright © 2025 ScalePoint</span>
+							<span>Авторское право © 2025 QuirkyNest</span>
 					</div>
 				</div>
 				</div>
@@ -768,7 +923,6 @@ class="post-2865 page type-page status-publish ast-article-single" id="post-2865
 		</section>
 				</div>
 		</div>
-			</div><!-- #page -->
 
 <div id="ast-scroll-top" tabindex="0" class="ast-scroll-top-icon ast-scroll-to-top-right" data-on-devices="both">
 	<span class="ast-icon icon-arrow"><svg class="ast-arrow-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve">
