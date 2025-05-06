@@ -605,7 +605,7 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-eye::before { content: "\f341"; }
 .bi-eyedropper::before { content: "\f342"; }
 .bi-eyeglasses::before { content: "\f343"; }
-.bi-facebook::before { content: "\F5B3"; }
+.bi-facebook::before { content: "\f437"; }
 .bi-file-arrow-down-fill::before { content: "\f345"; }
 .bi-file-arrow-down::before { content: "\f346"; }
 .bi-file-arrow-up-fill::before { content: "\f347"; }
