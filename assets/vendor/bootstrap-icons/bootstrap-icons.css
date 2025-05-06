@@ -1242,7 +1242,7 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-telephone-plus::before { content: "\f5be"; }
 .bi-telephone-x-fill::before { content: "\f5bf"; }
 .bi-telephone-x::before { content: "\f5c0"; }
-.bi-telephone::before { content: "\F5B3"; }
+.bi-telephone::before { content: "\f437"; }
 .bi-terminal-fill::before { content: "\f5c2"; }
 .bi-terminal::before { content: "\f5c3"; }
 .bi-text-center::before { content: "\f5c4"; }
