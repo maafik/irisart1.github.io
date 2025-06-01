@@ -166,6 +166,22 @@ body {
   font-weight: bold;
 }
 
+.btn-order {
+  display: inline-block;
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btn-order:hover {
+  background-color: #666;
+}
+
+
 .form-container label {
   display: block;
   margin: 4px 0 2px; /* Уменьшены отступы */
