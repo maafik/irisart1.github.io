@@ -121,56 +121,104 @@
 
             <div class="col-lg-4">
               <div class="info-item d-flex align-items-center">
-<a href="#" 
-   onclick="
-     gtag('event', 'conversion', {
-       send_to: 'AW-17137564676/VLppCK7D89QaEIT46es_',
-       value: 10.0,
-       currency: 'USD',
-       event_callback: function() {
-         window.open('https://wa.me/16105041768?text=Hello%2C%20I%20would%20like%20to%20order%20a%20tattoo%20sketch', '_blank');
-       }
-     });
-     return false;
-   " 
-   style="text-decoration: none; color: inherit;" 
-   class="d-flex align-items-center">
+<!-- Event snippet for WATSAAAP conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': 'AW-17137564676/AhqtCNnB6dQaEIT46es_',
+    'event_callback': callback
+  });
+  return false;
+}
+</script>
 
+<a href="#"
+   onclick="return gtag_report_conversion('https://wa.me/16105041768?text=Hello%2C%20I%20would%20like%20to%20order%20a%20tattoo%20sketch');"
+   style="text-decoration: none; color: inherit;"
+   class="d-flex align-items-center">
   <i class="bi bi-geo-alt flex-shrink-0"></i>
   <div>
     <h3>WhatsApp</h3>
     <p>+16105041768</p>
   </div>
-
 </a>
 
 
+
               </div>
             </div><!-- End Info Item -->
             
 
             <div class="col-lg-4">
               <div class="info-item d-flex align-items-center">
-                <a href="https://ig.me/m/sketchs.master" target="_blank" style="text-decoration: none; color: inherit;" class="d-flex align-items-center">
-                  <i class="bi bi-telephone flex-shrink-0"></i>
-                  <div>
-                    <h3>Instagram</h3>
-                    <p>@sketchs.master</p>
-                  </div>
-                </a>
+<!-- Instagram conversion -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': 'AW-17137564676/243JCIGB9tQaEIT46es_',
+    'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+<a href="#"
+   onclick="return gtag_report_conversion('https://ig.me/m/sketchs.master');"
+   style="text-decoration: none; color: inherit;"
+   class="d-flex align-items-center">
+
+  <i class="bi bi-telephone flex-shrink-0"></i>
+  <div>
+    <h3>Instagram</h3>
+    <p>@sketchs.master</p>
+  </div>
+</a>
+
               </div>
             </div><!-- End Info Item -->
             
 
             <div class="col-lg-4">
               <div class="info-item d-flex align-items-center">
-                <a href="https://m.me/sketch1master" style="text-decoration: none; color: inherit;" class="d-flex align-items-center">
-                  <i class="bi bi-envelope flex-shrink-0"></i>
-                  <div>
-                    <h3>Facebook</h3>
-                    <p>sketch1master</p>
-                  </div>
-                </a>
+<!-- Конверсия при клике на Facebook -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': 'AW-17137564676/CUbyCKnW99QaEIT46es_',
+    'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+<a href="#" 
+   onclick="return gtag_report_conversion('https://m.me/sketch1master');" 
+   style="text-decoration: none; color: inherit;" 
+   class="d-flex align-items-center">
+
+  <i class="bi bi-envelope flex-shrink-0"></i>
+  <div>
+    <h3>Facebook</h3>
+    <p>sketch1master</p>
+  </div>
+
+</a>
+
               </div>
             </div><!-- End Info Item -->
             
