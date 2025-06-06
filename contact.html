@@ -39,6 +39,22 @@
   gtag('config', 'AW-17137564676');
 </script>
 
+<script>
+function gtag_report_conversion(url, sendTo) {
+  var callback = function () {
+    if (typeof(url) !== 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': sendTo,
+    'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+
 <!-- TikTok Pixel Code Start -->
 <script>
   !function (w, d, t) {
