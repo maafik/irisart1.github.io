@@ -584,7 +584,7 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-envelope-fill::before { content: "\f32c"; }
 .bi-envelope-open-fill::before { content: "\f32d"; }
 .bi-envelope-open::before { content: "\f32e"; }
-.bi-envelope::before { content: "\f32f"; }
+.bi-envelope::before { content: "\F344"; }
 .bi-eraser-fill::before { content: "\f330"; }
 .bi-eraser::before { content: "\f331"; }
 .bi-exclamation-circle-fill::before { content: "\f332"; }
@@ -605,7 +605,7 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-eye::before { content: "\f341"; }
 .bi-eyedropper::before { content: "\f342"; }
 .bi-eyeglasses::before { content: "\f343"; }
-.bi-facebook::before { content: "\f437"; }
+.bi-facebook::before { content: "\F344"; }
 .bi-file-arrow-down-fill::before { content: "\f345"; }
 .bi-file-arrow-down::before { content: "\f346"; }
 .bi-file-arrow-up-fill::before { content: "\f347"; }
@@ -848,7 +848,7 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-info::before { content: "\f434"; }
 .bi-input-cursor-text::before { content: "\f435"; }
 .bi-input-cursor::before { content: "\f436"; }
-.bi-instagram::before { content: "\f32f"; }
+.bi-instagram::before { content: "\F437"; }
 .bi-intersect::before { content: "\f438"; }
 .bi-journal-album::before { content: "\f439"; }
 .bi-journal-arrow-down::before { content: "\f43a"; }
@@ -1242,7 +1242,7 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-telephone-plus::before { content: "\f5be"; }
 .bi-telephone-x-fill::before { content: "\f5bf"; }
 .bi-telephone-x::before { content: "\f5c0"; }
-.bi-telephone::before { content: "\f437"; }
+.bi-telephone::before { content: "\F437"; }
 .bi-terminal-fill::before { content: "\f5c2"; }
 .bi-terminal::before { content: "\f5c3"; }
 .bi-text-center::before { content: "\f5c4"; }
@@ -1443,7 +1443,7 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-ear-fill::before { content: "\f688"; }
 .bi-ear::before { content: "\f689"; }
 .bi-envelope-check-fill::before { content: "\f68b"; }
-.bi-envelope-check::before { content: "\f68c"; }
+.bi-envelope-check::before { content: "\F437"; }
 .bi-envelope-dash-fill::before { content: "\f68e"; }
 .bi-envelope-dash::before { content: "\f68f"; }
 .bi-envelope-exclamation-fill::before { content: "\f691"; }
