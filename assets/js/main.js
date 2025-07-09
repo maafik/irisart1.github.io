@@ -259,7 +259,7 @@ startBtn.addEventListener('click', () => {
         });
       }
 
-      ym(102483778, 'reachGoal', 'form_success');
+ym(103273664,'reachGoal','form_success1')
 
       formStep1.style.display = 'none';
       formStep2.style.display = 'block';
