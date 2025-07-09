@@ -135,92 +135,136 @@
 
 })();
 
-// Функция для открытия формы
-function openForm() {
-  document.getElementById('formOverlay').style.display = 'flex';
-  history.pushState(null, '', location.href); // Добавляем в историю браузера
-}
 
-// Функция для перехода ко второму шагу
-function nextForm() {
-  document.getElementById('formOverlay').style.display = 'none';
-  document.getElementById('nextFormOverlay').style.display = 'flex';
-}
 
-// Функция для закрытия формы
-function closeForm() {
-  document.getElementById('formOverlay').style.display = 'none';
-  document.getElementById('nextFormOverlay').style.display = 'none';
-  document.getElementById('thankYouOverlay').style.display = 'none';
-}
 
-// Закрытие формы при клике на фон
-function closeOnBackground(event) {
-  if (event.target.classList.contains('overlay')) {
-    closeForm();
+document.addEventListener('DOMContentLoaded', () => {
+  const telegramToken = "7349206398:AAEthCsuxGhjdrvUOnFwFD478q7y474kRMM";
+  const telegramChatId = "5929919501";
+
+  const startBtn = document.getElementById('startOrderBtn');
+  const productOverlay = document.getElementById('productOverlay');
+  const formOverlay = document.getElementById('formOverlay');
+  const productOptions = document.querySelectorAll('.product-option');
+  const selectedProductInput = document.getElementById('selectedProduct');
+  const formStep1 = document.getElementById('formStep1');
+  const formStep2 = document.getElementById('formStep2');
+  const orderForm = document.getElementById('orderForm');
+
+  const formContainer = document.getElementById('form'); // контейнер для шага
+  let stepAdded = false; // флаг, чтобы не дублировать шаг
+
+  function addStep(productName) {
+    if (stepAdded) return;
+    if (!formContainer) {
+      console.warn('Элемент #form не найден!');
+      return;
+    }
+    const step = document.createElement('div');
+    step.className = 'step';
+    step.textContent = `Выбран товар: ${productName}`;
+    formContainer.appendChild(step);
+    stepAdded = true;
+    console.log('Шаг добавлен:', productName);
   }
-}
 
-// Закрытие формы при нажатии клавиши Escape
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') {
-    closeForm();
-  }
-});
+  // --- Добавлено: обработка хэша в URL ---
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#form') {
+      productOverlay.style.display = 'flex';
 
-// Перехват кнопки "Назад" браузера
-window.addEventListener('popstate', function (event) {
-  closeForm(); // При нажатии кнопки "Назад" скрываем форму
-});
-
-// Отправка формы
-async function submitForm(event) {
-  event.preventDefault();
-
-  const formData = new FormData(document.getElementById('orderForm'));
-
-  // Ваши действия для отправки в Telegram
-  const message = `
-    Новый заказ:
-    Имя: ${formData.get('name')}
-    Тип заказа: ${formData.get('orderType')}
-    Телефон: ${formData.get('phone')}
-    Контакт: ${formData.get('contactPref')}
-    Контакт: ${formData.get('painting')}
-    Описание работы: ${formData.get('workDescription')}
-  `;
-  const files = formData.getAll('examplePhoto');
-  const chatId = '5929919501';
-  const token = '7349206398:AAEthCsuxGhjdrvUOnFwFD478q7y474kRMM';
-
-  await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text: message }),
+      // Добавим шаг с первым товаром, если он не добавлен
+      const firstProduct = productOverlay.querySelector('.product-option');
+      if (firstProduct) {
+        addStep(firstProduct.dataset.product);
+      }
+    } else {
+      productOverlay.style.display = 'none';
+    }
   });
 
-  for (const file of files) {
-    const fileFormData = new FormData();
-    fileFormData.append('chat_id', chatId);
-    fileFormData.append('document', file);
-
-    await fetch(`https://api.telegram.org/bot${token}/sendDocument`, {
-      method: 'POST',
-      body: fileFormData,
-    });
+  // При загрузке, если хэш уже #form — сразу открыть оверлей
+  if (location.hash === '#form') {
+    productOverlay.style.display = 'flex';
+    const firstProduct = productOverlay.querySelector('.product-option');
+    if (firstProduct) {
+      addStep(firstProduct.dataset.product);
+    }
   }
 
-  // Показываем сообщение об успехе
-  document.getElementById('nextFormOverlay').style.display = 'none';
-  document.getElementById('thankYouOverlay').style.display = 'flex';
-}
+  // --- При клике на кнопку — просто устанавливаем #form ---
+startBtn.addEventListener('click', () => {
+  if (location.hash !== '#form') {
+    location.hash = 'form'; // вызовет hashchange
+  } else {
+    // если уже #form — открыть оверлей вручную
+    productOverlay.style.display = 'flex';
 
-// Для кнопки Telegram
-document.getElementById('telegramLink').addEventListener('click', function () {
-  ym(99130561, 'reachGoal', 'telegram_click');
+    const firstProduct = productOverlay.querySelector('.product-option');
+    if (firstProduct) {
+      addStep(firstProduct.dataset.product);
+    }
+  }
 });
 
-// Для кнопки WhatsApp
-document.getElementById('whatsappLink').addEventListener('click', function () {
-  ym(99130561, 'reachGoal', 'whatsapp_click');
+
+  productOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const selectedProduct = option.dataset.product;
+      selectedProductInput.value = selectedProduct;
+      productOverlay.style.display = 'none';
+      formOverlay.style.display = 'flex';
+    });
+  });
+
+  productOverlay.onclick = (e) => {
+    if (e.target === productOverlay) {
+      productOverlay.style.display = 'none';
+      history.back(); // чтобы убрать #form при закрытии вручную
+    }
+  };
+
+  formOverlay.onclick = (e) => {
+    if (e.target === formOverlay) {
+      formOverlay.style.display = 'none';
+    }
+  };
+
+  orderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(orderForm);
+    const message = `Новый заказ:\n` +
+      `Товар: ${formData.get('product')}\n` +
+      `Имя: ${formData.get('name')}\n` +
+      `Телефон: ${formData.get('phone')}\n` +
+      `Связь: ${formData.get('contactMethod')}\n` +
+      `Размер: ${formData.get('size')}\n` +
+      `Описание принта: ${formData.get('description') || 'Не указано'}`;
+
+    try {
+      await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: telegramChatId, text: message })
+      });
+
+      const files = formData.getAll('photos');
+      for (const file of files) {
+        const photoData = new FormData();
+        photoData.append('chat_id', telegramChatId);
+        photoData.append('photo', file);
+        await fetch(`https://api.telegram.org/bot${telegramToken}/sendPhoto`, {
+          method: 'POST',
+          body: photoData
+        });
+      }
+
+      ym(102483778, 'reachGoal', 'form_success');
+
+      formStep1.style.display = 'none';
+      formStep2.style.display = 'block';
+    } catch (error) {
+      alert('Ошибка отправки формы. Попробуйте позже.');
+    }
+  });
 });
