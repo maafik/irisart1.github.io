@@ -144,7 +144,7 @@
 
     // Обновление ссылки на WhatsApp с параметрами
     const phoneNumber = '79517623467';  // Номер телефона
-    const message = encodeURIComponent(`Хочу%20заказать%20${title}%20за%20${price}`);
+    const message = encodeURIComponent(`Хочу заказать ${title} за ${price}`);
     document.getElementById('whatsappLink').href = `https://wa.me/${phoneNumber}?text=${message}`;
     
     // Чтобы форма не закрылась, если кликнуть по ней
