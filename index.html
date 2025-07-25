@@ -222,24 +222,6 @@
 </section>
 <script>
   // Функция для переключения между передними и задними накидками
-  function toggleItems(type) {
-    const frontItems = document.getElementById('frontItems');
-    const backItems = document.getElementById('backItems');
-    const frontBtn = document.getElementById('frontBtn');
-    const backBtn = document.getElementById('backBtn');
-
-    if (type === 'front') {
-      frontItems.style.display = 'flex';
-      backItems.style.display = 'none';
-      frontBtn.classList.add('active');
-      backBtn.classList.remove('active');
-    } else {
-      backItems.style.display = 'flex';
-      frontItems.style.display = 'none';
-      backBtn.classList.add('active');
-      frontBtn.classList.remove('active');
-    }
-  }
 
   // Начальная загрузка — показываем передние накидки
   window.onload = function() {
@@ -422,45 +404,6 @@
     </div>
   </div>
 </div>
-
-<script>
-  function openOrder(image, title, price) {
-    document.getElementById('orderPopup').style.display = 'flex';
-    document.getElementById('popupImage').src = image;
-    document.getElementById('popupTitle').innerText = title;
-    document.getElementById('popupPrice').innerText = price;
-
-    // Обновление ссылки на WhatsApp с параметрами
-    const phoneNumber = '79517623467';  // Номер телефона
-    const message = encodeURIComponent(`Хочу%20заказать%20${title}%20за%20${price}`);
-    document.getElementById('whatsappLink').href = `https://wa.me/${phoneNumber}?text=${message}`;
-    
-    // Чтобы форма не закрылась, если кликнуть по ней
-    document.getElementById('orderPopup').addEventListener('click', closeOrder);
-    document.getElementById('orderPopup').addEventListener('click', function (event) {
-      if (event.target === document.getElementById('orderPopup')) {
-        closeOrder();
-      }
-    });
-  }
-
-  function closeOrder() {
-    document.getElementById('orderPopup').style.display = 'none';
-  }
-
-  // Обработчик кнопки "Назад" в браузере
-  window.onpopstate = function () {
-    closeOrder();
-  };
-
-  // Для поддержки кнопки "Назад", добавляем историю в стэк
-  function handleHistory() {
-    window.history.pushState({}, '');
-  }
-
-  // Вызовите эту функцию при открытии попапа
-  window.addEventListener('load', handleHistory);
-</script>
 
 
 
