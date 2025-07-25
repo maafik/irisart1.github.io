@@ -88,172 +88,13 @@
 <h2><span>Привет! Меня зовут</span> <span class="underlight">Ирина,</span> <span>и я создаю автонакидки с душой.</span></h2>
 <p>Я помогаю сделать интерьер автомобиля стильным и комфортным. Мои <strong>универсальные льняные накидки</strong> не только защищают сиденья, но и придают салону особый характер. Я лично подбираю материалы и слежу за качеством — чтобы каждая пара накидок радовала вас каждый день.</p>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
 
-.button {
-  padding: 15px 30px;
-  font-size: 18px;
-  background-color: #9d62cf;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-
-    .button:hover {
-      background-color: #7c4bad;
-    }
-
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
-      z-index: 1000;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-y: auto;
-      padding: 40px 0;
-    }
-
-    .form-container {
-      background-color: #000;
-      padding: 20px;
-      border: 2px solid #9d62cf;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    }
-
-    @media (max-width: 600px) {
-  .form-container {
-    max-width: 100%;
-  }
-}
-
-
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 2px solid #9d62cf;
-      border-radius: 5px;
-      background: #0f0f0f;
-      color: #fff;
-      box-sizing: border-box;
-    }
-
-    .product-options {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    @media (max-width: 480px) {
-  .product-option {
-    width: 100%;
-  }
-}
-
-.product-option {
-  cursor: pointer;
-  border: 3px solid transparent;
-  border-radius: 10px;
-  transition: border 0.3s;
-  max-width: 180px;
-  width: calc(50% - 10px); /* два в ряд с учетом gap */
-  box-sizing: border-box;
-}
-
-
-    .product-option:hover {
-      border: 3px solid #9d62cf;
-    }
-
-    textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 2px solid #9d62cf;
-  border-radius: 5px;
-  background: #0f0f0f;
-  color: #fff;
-  resize: vertical;
-  box-sizing: border-box;
-}
-
-  </style>
 <body>
 
   <!-- Стартовая кнопка -->
+<a href="#orderSection">
   <button class="button" id="startOrderBtn">Сделать заказ</button>
-
-  <!-- Первый шаг: выбор товара -->
-  <div class="overlay" id="productOverlay">
-    <div class="form-container">
-      <h2>Выберите товар</h2>
-<div class="product-options">
-  <img src="images/female_1.jpg" alt="Мужская футболка хлопок" class="product-option" data-product="Мужская футболка хлопок" />
-  <img src="images/female_2.jpg" alt="Мужская футболка оверсайз" class="product-option" data-product="Мужская футболка оверсайз" />
-  <img src="images/female_3.jpg" alt="Женская футболка хлопок" class="product-option" data-product="Женская футболка хлопок" />
-  <img src="images/female_4.jpg" alt="Женская футболка оверсайз" class="product-option" data-product="Женская футболка оверсайз" />
-    <img src="images/female_5.jpg" alt="Кружка" class="product-option" data-product="Кружка" />
-</div>
-
-    </div>
-  </div>
-
-  <!-- Второй шаг: форма -->
-<div class="overlay" id="formOverlay">
-  <div class="form-container" id="formStep1">
-    <form id="orderForm">
-      <input type="hidden" name="product" id="selectedProduct" />
-
-      <label for="name">Ваше имя:</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="phone">Ваш номер телефона:</label>
-      <input type="tel" id="phone" name="phone" required />
-
-      <label for="contactMethod">Способ связи:</label>
-      <select id="contactMethod" name="contactMethod" required>
-        <option value="whatsapp">WhatsApp</option>
-        <option value="telegram">Telegram</option>
-      </select>
-
-      <label for="description">Комментарий к заказу (необязательно):</label>
-      <textarea id="description" name="description" rows="3" placeholder="Например, марка авто или пожелания по цвету."></textarea>
-
-      <button class="button" type="submit">Отправить заказ</button>
-    </form>
-  </div>
-
-  <div class="form-container" id="formStep2" style="display: none; text-align: center;">
-    <h2>Спасибо за заказ!</h2>
-    <p>Остался последний шаг — напишите <strong>«+»</strong> в удобный мессенджер:</p>
-    <p>
-      <a href="https://wa.me/79517623467" target="_blank">WhatsApp</a> |
-      <a href="https://t.me/IrisArts1" target="_blank">Telegram</a>
-    </p>
-  </div>
-</div>
-
+</a>
 
 </body>
    
@@ -295,11 +136,116 @@
   </p>
 </div>
 
+<section id="orderSection">
+  <!-- Контент секции, куда нужно прокачать -->
+</section>
+
+<style>
+  #orderSection {
+    margin: 0;
+    padding: 0;
+  }
+
+  #orderSection h2,
+  #orderSection p {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+
+
 </div>
-    <section id="gallery-4" class="gallery section">
 
+<section class="gallery">
+  <!-- Кнопки для переключения товаров
+<div class="toggle-buttons">
+  <div class="toggle-btn active" id="frontBtn" onclick="toggleItems('front')">
+    <img src="assets/img/gallery-5/gallery-1.webp" alt="Front" />
+  </div>
+  <div class="toggle-btn" id="backBtn" onclick="toggleItems('back')">
+    <img src="assets/img/gallery-5/gallery-2.webp" alt="Back" />
+  </div>
+</div>
+-->
 
+  <!-- Секция товаров -->
+  <div class="gallery-items" id="frontItems">
+    <!-- Передние накидки -->
+    <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-1.webp', 'Накидка на передние сиденья, льняная — чёрный/синий, 2 шт', '1 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-1.webp" alt="Накидка чёрный/синий">
+      <button>Заказать</button>
+    </div>
+        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на передние сиденья, льняная — чёрный/красный, 2 шт', '1 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/синий">
+      <button>Заказать</button>
+    </div>
+        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-3.webp', 'Накидка на передние сиденья, льняная — чёрный, 2 шт', '1 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-3.webp" alt="Накидка чёрный/синий">
+      <button>Заказать</button>
+    </div>
+        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-4.webp', 'Накидка на передние сиденья, льняная — серая, 2 шт', '1 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-4.webp" alt="Накидка чёрный/синий">
+      <button>Заказать</button>
+    </div>
+        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-5.webp', 'Накидка на передние сиденья, льняная — бежевая, 2 шт', '1 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-5.webp" alt="Накидка чёрный/синий">
+      <button>Заказать</button>
+    </div>
+    <!-- Добавьте остальные товары передних накидок аналогично -->
+  </div>
 
+  <div class="gallery-items" id="backItems" style="display: none;">
+    <!-- Задние накидки -->
+    <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на задние сиденья, льняная — чёрный/красный, 2 шт', '2 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/красный">
+      <button>Заказать</button>
+    </div>
+        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на задние сиденья, льняная — чёрный/красный, 2 шт', '2 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/красный">
+      <button>Заказать</button>
+    </div>
+        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на задние сиденья, льняная — чёрный/красный, 2 шт', '2 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/красный">
+      <button>Заказать</button>
+    </div>
+        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на задние сиденья, льняная — чёрный/красный, 2 шт', '2 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/красный">
+      <button>Заказать</button>
+    </div>
+        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на задние сиденья, льняная — чёрный/красный, 2 шт', '2 999 ₽')">
+      <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/красный">
+      <button>Заказать</button>
+    </div>
+    <!-- Добавьте остальные товары задних накидок аналогично -->
+  </div>
+</section>
+<script>
+  // Функция для переключения между передними и задними накидками
+  function toggleItems(type) {
+    const frontItems = document.getElementById('frontItems');
+    const backItems = document.getElementById('backItems');
+    const frontBtn = document.getElementById('frontBtn');
+    const backBtn = document.getElementById('backBtn');
+
+    if (type === 'front') {
+      frontItems.style.display = 'flex';
+      backItems.style.display = 'none';
+      frontBtn.classList.add('active');
+      backBtn.classList.remove('active');
+    } else {
+      backItems.style.display = 'flex';
+      frontItems.style.display = 'none';
+      backBtn.classList.add('active');
+      frontBtn.classList.remove('active');
+    }
+  }
+
+  // Начальная загрузка — показываем передние накидки
+  window.onload = function() {
+    toggleItems('front');
+  };
+</script>
 
 
 
@@ -350,31 +296,34 @@
     background: #222;
   }
 
-  .order-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.88);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+ .order-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.88);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+  box-sizing: border-box;
+  cursor: pointer; /* Это позволяет воспринимать клик вне формы */
+}
 
-  .order-content {
-    background: #1a1a1a;
-    display: flex;
-    max-width: 800px;
-    width: 100%;
-    border: 2px solid #444;
-    position: relative;
-    overflow: hidden;
-    flex-direction: row;
-  }
+.order-content {
+  background: #1a1a1a;
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  border: 2px solid #444;
+  position: relative;
+  overflow: hidden;
+  flex-direction: row;
+  cursor: default; /* Это отключает клик по самой форме */
+}
+
 
   .order-image {
     width: 50%;
@@ -459,37 +408,6 @@
   }
 </style>
 
-<section class="gallery">
-<div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-1.webp', 'Накидка на передние сиденья, льняная — чёрный/синий, 2 шт', '2 999 ₽')">
-  <img src="assets/img/gallery-5/gallery-1.webp" alt="Накидка чёрный/синий">
-  <button>Заказать</button>
-</div>
-
-<div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на передние сиденья, льняная — чёрный/красный, 2 шт', '2 999 ₽')">
-  <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/красный">
-  <button>Заказать</button>
-</div>
-
-<div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-3.webp', 'Накидка на передние сиденья, льняная — чёрный, 2 шт', '2 999 ₽')">
-  <img src="assets/img/gallery-5/gallery-3.webp" alt="Накидка чёрная">
-  <button>Заказать</button>
-</div>
-
-<div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-4.webp', 'Накидка на передние сиденья, льняная — серая, 2 шт', '2 999 ₽')">
-  <img src="assets/img/gallery-5/gallery-4.webp" alt="Накидка серая">
-  <button>Заказать</button>
-</div>
-
-<div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-5.webp', 'Накидка на передние сиденья, льняная — бежевая, 2 шт', '2 999 ₽')">
-  <img src="assets/img/gallery-5/gallery-5.webp" alt="Накидка бежевая">
-  <button>Заказать</button>
-</div>
-
-  
-
-  <!-- Добавь остальные товары аналогично -->
-</section>
-
 <!-- Popup -->
 <div class="order-popup" id="orderPopup">
   <div class="order-content">
@@ -500,24 +418,51 @@
     <div class="order-details">
       <h3 id="popupTitle"></h3>
       <p id="popupPrice"></p>
-      <a id="whatsappLink" class="whatsapp-btn" target="_blank">Заказать в WhatsApp</a>
+      <a id="whatsappLink" class="whatsapp-btn" target="_blank" href="https://wa.me/79517623467">Заказать в WhatsApp</a>
     </div>
   </div>
 </div>
 
 <script>
-  function openOrder(imgSrc, title, price) {
-    document.getElementById('popupImage').src = imgSrc;
+  function openOrder(image, title, price) {
+    document.getElementById('orderPopup').style.display = 'flex';
+    document.getElementById('popupImage').src = image;
     document.getElementById('popupTitle').innerText = title;
     document.getElementById('popupPrice').innerText = price;
-    document.getElementById('whatsappLink').href = 'https://wa.me/79999999999?text=' + encodeURIComponent(`Здравствуйте! Хочу заказать: ${title} за ${price}`);
-    document.getElementById('orderPopup').style.display = 'flex';
+
+    // Обновление ссылки на WhatsApp с параметрами
+    const phoneNumber = '79517623467';  // Номер телефона
+    const message = encodeURIComponent(`Хочу%20заказать%20${title}%20за%20${price}`);
+    document.getElementById('whatsappLink').href = `https://wa.me/${phoneNumber}?text=${message}`;
+    
+    // Чтобы форма не закрылась, если кликнуть по ней
+    document.getElementById('orderPopup').addEventListener('click', closeOrder);
+    document.getElementById('orderPopup').addEventListener('click', function (event) {
+      if (event.target === document.getElementById('orderPopup')) {
+        closeOrder();
+      }
+    });
   }
 
   function closeOrder() {
     document.getElementById('orderPopup').style.display = 'none';
   }
+
+  // Обработчик кнопки "Назад" в браузере
+  window.onpopstate = function () {
+    closeOrder();
+  };
+
+  // Для поддержки кнопки "Назад", добавляем историю в стэк
+  function handleHistory() {
+    window.history.pushState({}, '');
+  }
+
+  // Вызовите эту функцию при открытии попапа
+  window.addEventListener('load', handleHistory);
 </script>
+
+
 
   </main>
 
