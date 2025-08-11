@@ -136,29 +136,63 @@
 })();
 
 
-  function openOrder(image, title, price) {
-    document.getElementById('orderPopup').style.display = 'flex';
-    document.getElementById('popupImage').src = image;
-    document.getElementById('popupTitle').innerText = title;
-    document.getElementById('popupPrice').innerText = price;
+ let basePrice = 1999; // Изначальная цена без заднего сиденья
+let additionalPrice = 2000; // Цена за заднее сиденье
+let totalPrice = basePrice; // Итоговая цена
+let selectedItem = {}; // Объект для хранения выбранного товара
 
-    // Обновление ссылки на WhatsApp с параметрами
-    const phoneNumber = '79517623467';  // Номер телефона
-    const message = encodeURIComponent(`Хочу заказать ${title} за ${price}`);
-    document.getElementById('whatsappLink').href = `https://wa.me/${phoneNumber}?text=${message}`;
-    
-    // Чтобы форма не закрылась, если кликнуть по ней
-    document.getElementById('orderPopup').addEventListener('click', closeOrder);
-    document.getElementById('orderPopup').addEventListener('click', function (event) {
-      if (event.target === document.getElementById('orderPopup')) {
-        closeOrder();
-      }
-    });
+// Функция для открытия попапа с товаром
+function openOrder(image, title, price) {
+  selectedItem = { image, title, price };
+
+  document.getElementById('orderPopup').style.display = 'flex';
+  document.getElementById('popupImage').src = image;
+  document.getElementById('popupTitle').innerText = title;
+
+  // Устанавливаем начальную цену товара
+  totalPrice = price; // Сбрасываем цену товара, передаем новую цену
+
+  // Обновляем цену в попапе
+  updatePrice();
+
+  // Обновляем ссылку на WhatsApp с параметрами
+  const phoneNumber = '79517623467';  // Номер телефона
+  const message = encodeURIComponent(`Хочу заказать ${title} за ${totalPrice} ₽`);
+  document.getElementById('whatsappLink').href = `https://wa.me/${phoneNumber}?text=${message}`;
+
+  // Чтобы форма не закрылась, если кликнуть по ней
+  document.getElementById('orderPopup').addEventListener('click', closeOrder);
+  document.getElementById('orderPopup').addEventListener('click', function (event) {
+    if (event.target === document.getElementById('orderPopup')) {
+      closeOrder();
+    }
+  });
+}
+
+// Функция для обновления цены при изменении состояния чекбокса
+function updatePrice() {
+  const rearSeatCheckbox = document.getElementById('backSeatCheckbox');
+
+  // Проверяем, выбран ли чекбокс
+  if (rearSeatCheckbox.checked) {
+    totalPrice = selectedItem.price + additionalPrice; // Добавляем 2000 ₽ за заднее сиденье
+  } else {
+    totalPrice = selectedItem.price; // Возвращаем исходную цену
   }
 
-  function closeOrder() {
-    document.getElementById('orderPopup').style.display = 'none';
-  }
+  // Обновляем цену в попапе
+  document.getElementById('popupPrice').innerText = `Цена: ${totalPrice} ₽`;
+
+  // Обновляем ссылку на WhatsApp с актуальной ценой
+  const message = encodeURIComponent(`Хочу заказать ${selectedItem.title} за ${totalPrice} ₽`);
+  document.getElementById('whatsappLink').href = `https://wa.me/79517623467?text=${message}`;
+}
+
+// Закрытие попапа
+function closeOrder(event) {
+  document.getElementById('orderPopup').style.display = 'none';
+}
+
 
   // Обработчик кнопки "Назад" в браузере
   window.onpopstate = function () {
@@ -191,4 +225,36 @@
       frontBtn.classList.remove('active');
     }
   }
-  
+  const reviewsWrapper = document.querySelector('.reviews-wrapper');
+let isMouseDown = false;
+let startX, scrollLeft;
+
+reviewsWrapper.addEventListener('mousedown', (e) => {
+  isMouseDown = true;
+  startX = e.pageX - reviewsWrapper.offsetLeft;
+  scrollLeft = reviewsWrapper.scrollLeft;
+  reviewsWrapper.style.cursor = 'grabbing';
+});
+
+reviewsWrapper.addEventListener('mouseleave', () => {
+  isMouseDown = false;
+  reviewsWrapper.style.cursor = 'grab';
+});
+
+reviewsWrapper.addEventListener('mouseup', () => {
+  isMouseDown = false;
+  reviewsWrapper.style.cursor = 'grab';
+});
+
+reviewsWrapper.addEventListener('mousemove', (e) => {
+  if (!isMouseDown) return;
+  const x = e.pageX - reviewsWrapper.offsetLeft;
+  const walk = (x - startX) * 3; // Скорость прокрутки
+  reviewsWrapper.scrollLeft = scrollLeft - walk;
+});
+
+reviewsWrapper.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  reviewsWrapper.scrollLeft += e.deltaY; // Прокрутка мышью
+});
+

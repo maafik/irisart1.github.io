@@ -169,31 +169,30 @@
 </div>
 -->
 
-  <!-- Секция товаров -->
-  <div class="gallery-items" id="frontItems">
-    <!-- Передние накидки -->
-    <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-1.webp', 'Накидка на передние сиденья, льняная — чёрный/синий, 2 шт', '1 999 ₽')">
-      <img src="assets/img/gallery-5/gallery-1.webp" alt="Накидка чёрный/синий">
-      <button>Заказать</button>
-    </div>
-        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на передние сиденья, льняная — чёрный/красный, 2 шт', '1 999 ₽')">
-      <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/синий">
-      <button>Заказать</button>
-    </div>
-        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-3.webp', 'Накидка на передние сиденья, льняная — чёрный, 2 шт', '1 999 ₽')">
-      <img src="assets/img/gallery-5/gallery-3.webp" alt="Накидка чёрный/синий">
-      <button>Заказать</button>
-    </div>
-        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-4.webp', 'Накидка на передние сиденья, льняная — серая, 2 шт', '1 999 ₽')">
-      <img src="assets/img/gallery-5/gallery-4.webp" alt="Накидка чёрный/синий">
-      <button>Заказать</button>
-    </div>
-        <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-5.webp', 'Накидка на передние сиденья, льняная — бежевая, 2 шт', '1 999 ₽')">
-      <img src="assets/img/gallery-5/gallery-5.webp" alt="Накидка чёрный/синий">
-      <button>Заказать</button>
-    </div>
-    <!-- Добавьте остальные товары передних накидок аналогично -->
+<!-- Секция товаров -->
+<div class="gallery-items" id="frontItems">
+  <!-- Передние накидки -->
+  <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-1.webp', 'Накидка на передние сиденья, льняная — чёрный/синий, 2 шт', 1999)">
+    <img src="assets/img/gallery-5/gallery-1.webp" alt="Накидка чёрный/синий">
+    <button>Заказать</button>
   </div>
+  <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-2.webp', 'Накидка на передние сиденья, льняная — чёрный/красный, 2 шт', 1999)">
+    <img src="assets/img/gallery-5/gallery-2.webp" alt="Накидка чёрный/красный">
+    <button>Заказать</button>
+  </div>
+  <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-3.webp', 'Накидка на передние сиденья, льняная — чёрный, 2 шт', 1999)">
+    <img src="assets/img/gallery-5/gallery-3.webp" alt="Накидка чёрный">
+    <button>Заказать</button>
+  </div>
+  <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-4.webp', 'Накидка на передние сиденья, льняная — серая, 2 шт', 1999)">
+    <img src="assets/img/gallery-5/gallery-4.webp" alt="Накидка серая">
+    <button>Заказать</button>
+  </div>
+  <div class="gallery-item" onclick="openOrder('assets/img/gallery-5/gallery-5.webp', 'Накидка на передние сиденья, льняная — бежевая, 2 шт', 1999)">
+    <img src="assets/img/gallery-5/gallery-5.webp" alt="Накидка бежевая">
+    <button>Заказать</button>
+  </div>
+</div>
 
   <div class="gallery-items" id="backItems" style="display: none;">
     <!-- Задние накидки
@@ -230,23 +229,54 @@
 </script>
 
 <!-- Popup -->
-<div class="order-popup" id="orderPopup">
-  <div class="order-content">
-    <div class="close-btn" onclick="closeOrder()">✖</div>
+<div class="order-popup" id="orderPopup" onclick="closeOrder(event)">
+  <div class="order-content" onclick="event.stopPropagation()"> <!-- Останавливаем распространение события -->
+    <div class="close-btn" onclick="closeOrder(event)">✖</div>
     <div class="order-image">
       <img id="popupImage" src="" alt="">
     </div>
     <div class="order-details">
       <h3 id="popupTitle"></h3>
-      <p id="popupPrice"></p>
+      <p id="popupPrice">Цена: </p>
+
+      <!-- Чекбокс для выбора заднего сиденья -->
+      <label class="custom-checkbox">
+        <input type="checkbox" id="backSeatCheckbox" onclick="updatePrice()">
+        <span class="checkmark"></span> Заднее сиденье +2000
+      </label>
+
       <a id="whatsappLink" class="whatsapp-btn" target="_blank" href="https://wa.me/79517623467">Заказать в WhatsApp</a>
     </div>
   </div>
 </div>
 
 
-
   </main>
+
+<section id="reviews" class="reviews-section">
+  <div class="container">
+    <h2>Отзывы наших клиентов</h2>
+    <div class="reviews-wrapper">
+      <div class="review-item">
+        <img src="assets/img/gallery-5/pavlovsk.jpg" alt="User 1">
+      </div>
+      <div class="review-item">
+        <img src="assets/img/gallery-5/pavlovsk1.jpg" alt="User 2">
+      </div>
+      <div class="review-item">
+        <img src="assets/img/gallery-5/pavlovsk2.jpg" alt="User 3">
+      </div>
+      <div class="review-item">
+        <img src="assets/img/gallery-5/pavlovsk3.jpg" alt="User 4">
+      </div>
+            <div class="review-item">
+        <img src="assets/img/gallery-5/pavlovsk4.jpg" alt="User 4">
+      </div>
+
+
+    </div>
+  </div>
+</section>
 
   <footer id="footer" class="footer">
 
