@@ -126,7 +126,7 @@
   <h2 style="font-size: 28px; margin-bottom: 20px;">Как заказать накидки на авто:</h2>
   <ul style="list-style: none; padding: 0; margin: 0 0 30px 0;">
     <li style="font-size: 18px; margin: 10px 0;">1. Выберите нужный цвет накидок</li>
-    <li style="font-size: 18px; margin: 10px 0;">2. Укажите марку и модель автомобиля (если необходимо)</li>
+    <li style="font-size: 18px; margin: 10px 0;">2. Укажите марку и модель автомобиля</li>
     <li style="font-size: 18px; margin: 10px 0;">3. Оформите заказ любым удобным способом</li>
   </ul>
   <img src="images/STEPS_NEW_992x.webp" alt="Как заказать" style="max-width: 300px; width: 100%; border-radius: 10px; margin-top: 20px;" />
@@ -230,19 +230,22 @@
 
 <!-- Popup -->
 <div class="order-popup" id="orderPopup" onclick="closeOrder(event)">
-  <div class="order-content" onclick="event.stopPropagation()"> <!-- Останавливаем распространение события -->
+  <div class="order-content" onclick="event.stopPropagation()">
     <div class="close-btn" onclick="closeOrder(event)">✖</div>
     <div class="order-image">
       <img id="popupImage" src="" alt="">
     </div>
     <div class="order-details">
-      <h3 id="popupTitle"></h3>
+      <h3 id="popupTitle">Название товара</h3>
       <p id="popupPrice">Цена: </p>
 
-      <!-- Чекбокс для выбора заднего сиденья -->
+      <!-- Чекбокс для доплаты -->
       <label class="custom-checkbox">
-        <input type="checkbox" id="backSeatCheckbox" onclick="updatePrice()">
-        <span class="checkmark"></span> Заднее сиденье +2000
+        <input type="checkbox" 
+               id="backSeatCheckbox" 
+               data-price="2000" 
+               onclick="updatePrice()">
+        <span class="checkmark"></span> Задние сиденье +<span>2000</span> ₽
       </label>
 
       <a id="whatsappLink" class="whatsapp-btn" target="_blank" href="https://wa.me/79517623467">Заказать в WhatsApp</a>

@@ -135,11 +135,7 @@
 
 })();
 
-
- let basePrice = 1999; // Изначальная цена без заднего сиденья
-let additionalPrice = 2000; // Цена за заднее сиденье
-let totalPrice = basePrice; // Итоговая цена
-let selectedItem = {}; // Объект для хранения выбранного товара
+ 
 
 // Функция для открытия попапа с товаром
 function openOrder(image, title, price) {
@@ -170,23 +166,55 @@ function openOrder(image, title, price) {
 }
 
 // Функция для обновления цены при изменении состояния чекбокса
+let selectedItem = {}; 
+let totalPrice = 0;
+
+function openOrder(image, title, price) {
+  // сохраняем выбранный товар
+  selectedItem = { image, title, price: parseInt(price, 10) };
+
+  // показываем попап
+  const popup = document.getElementById('orderPopup');
+  popup.style.display = 'flex';
+
+  // подставляем данные
+  document.getElementById('popupImage').src = image;
+  document.getElementById('popupTitle').innerText = title;
+
+  // сбрасываем чекбокс
+  const rearSeatCheckbox = document.getElementById('backSeatCheckbox');
+  rearSeatCheckbox.checked = false;
+
+  // ставим базовую цену для товара
+  totalPrice = selectedItem.price;
+
+  // обновляем цену и WhatsApp ссылку
+  updatePrice();
+
+  // закрытие по клику вне окна
+  popup.onclick = function (event) {
+    if (event.target === popup) {
+      closeOrder();
+    }
+  };
+}
+
 function updatePrice() {
   const rearSeatCheckbox = document.getElementById('backSeatCheckbox');
+  const addPrice = parseInt(rearSeatCheckbox.dataset.price, 10) || 0;
 
-  // Проверяем, выбран ли чекбокс
+  totalPrice = selectedItem.price;
   if (rearSeatCheckbox.checked) {
-    totalPrice = selectedItem.price + additionalPrice; // Добавляем 2000 ₽ за заднее сиденье
-  } else {
-    totalPrice = selectedItem.price; // Возвращаем исходную цену
+    totalPrice += addPrice;
   }
 
-  // Обновляем цену в попапе
   document.getElementById('popupPrice').innerText = `Цена: ${totalPrice} ₽`;
 
-  // Обновляем ссылку на WhatsApp с актуальной ценой
   const message = encodeURIComponent(`Хочу заказать ${selectedItem.title} за ${totalPrice} ₽`);
   document.getElementById('whatsappLink').href = `https://wa.me/79517623467?text=${message}`;
 }
+
+
 
 // Закрытие попапа
 function closeOrder(event) {
